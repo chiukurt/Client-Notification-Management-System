@@ -4,6 +4,8 @@
 <img src="" alt=""/>
 
 Capabilities:
+  - Login and register users + user image and role
+  - MD5 Hash for password upon login
   - Create, retrieve (filter), update, delete clients
   - Create, retrieve (filter), update, delete notifications
   - Create, retrieve (filter), update, delete notifications per client
