@@ -1,0 +1,49 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><?php echo ucfirst($_GET['action']); ?> a <?php echo ucfirst($page);?></h1>
+    </div>
+  </div>
+	<div class="container">
+		<form <?php echo 'action="?page='.$page.'&action=doAdd"';?> method="post">
+		<table class="table table-hover">
+			<tr style="background:lightgrey;">
+				<td>
+					Rows marked with * are mandatory and require valid input.
+				</td>
+				<td>
+				</td>
+			</tr>
+			
+			<?php
+			print_row ("*Notification name","Name","");
+			print_row ("*Notification type","Type","");
+			?>
+			
+			<tr>
+				<td>
+					Status: Enabled
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Enabled">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					Status: Disabled
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Disabled" checked="checked">
+				</td>
+			</tr>
+		</table>
+		<?php write_errors($page,$errorpath); ?>
+		<br><input type="submit">
+		</form>
+	</div>
+</main>
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>
+

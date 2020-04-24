@@ -1,0 +1,39 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><?php echo ucfirst($page).'s'; ?></h1>
+      <p>
+	  <form method="get">
+		<input type="text" placeholder="Search" name="filter">
+		<input type="hidden" name="page" <?php echo 'value="'.$page.'"'; ?>>
+		<input type="hidden" name="action" value="view">
+		<input type="submit">
+	  </form>
+	  </p>
+	  <p>
+	 <form method="get">
+		<input type="hidden" name="page" <?php echo 'value="'.$page.'"'; ?>>
+		<input type="hidden" name="action" value="add">
+		<input type="submit" <?php echo  'value="Add a new '.$page.'"'; ?>>
+	  </form>
+	  </p>
+    </div>
+  </div>
+  
+  <div class="container">
+  <p>
+  <table class="table table-hover">
+    <?php
+		$filter = $_GET ['filter'];
+		list_headers ($header_items);
+		list_itemsDB ($fileinfo,$filter,$page);
+    ?>
+	</table>
+  <p>
+  </div>
+</main>
+
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>

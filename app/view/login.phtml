@@ -1,0 +1,33 @@
+<?php
+
+?>
+<main role="main">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Hello</h1>
+      <p>Please log in.</p>
+	  <p>Please enable cookies before logging in.</p>
+	  <hr>
+	  
+	  <form action= '?page=login' method='post'>
+		  <p> Username: 
+			<input type='text' name='Username' value="admin">
+		  </p> 
+		  <hr>
+		  <p> Password:
+			<input type='text' name='Password' value="password">
+		  </p> 
+		  <hr>
+		  <p>
+			<input type='submit' value='Login'>
+		  </p>
+	  </form>
+	</div>
+  </div>
+</main>
+
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>

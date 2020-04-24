@@ -1,0 +1,81 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><?php echo ucfirst($_GET['action']); ?> a <?php echo ucfirst($page);?></h1>
+    </div>
+  </div>
+	<div class="container">
+		<form <?php echo 'action="?page='.$page.'&action=doAdd"';?> method="post">
+		<table class="table table-hover">
+			<tr style="background:lightgrey;">
+				<td>
+					Rows marked with * are mandatory and require valid input.
+				</td>
+				<td></tr>
+			</tr>
+			<tr style="background:lightgrey;">
+				<td>
+					To add a photo, update the user after successful creation.
+				</td>
+				<td></tr>
+			</tr>
+			
+			
+			<input type = "hidden" name="Photo" 
+			
+			<?php
+			echo 'value="<img src=';
+			echo "'";
+			$photopath = $config['DATA_PATH'].DS."photos".DS."0.png'";
+			$rightpath=substr($photopath,26);
+			echo $rightpath;
+			echo ' width=55 height=55>"';
+			
+			
+			/*
+			echo 'value="<img src=';
+			echo "'/comp1230/websitetesting/assignment2/app/data/photos/0.png'";
+			echo 'width=55 height=55>"';
+			*/
+			?>
+			
+			>
+			
+			<?php
+			print_row ("*First Name","FirstName","");
+			print_row ("*Last Name","LastName","");
+			print_row ("*E-mail Address","E-mail","");
+			print_row ("*Cell number","CellNumber","");
+			print_row ("*Position","Position","");
+			print_row ("*Username","Username","");
+			print_row ("*Password","Password","");
+			
+			?>
+			<tr>
+				<td>
+					Status: Active
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Active"  checked="checked">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					Status: Suspended
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Suspended">
+				</td>
+			</tr>
+			
+		</table>
+		<?php write_errors($page,$errorpath); ?>
+		<br><input type="submit">
+		</form>
+	</div>
+</main>
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>

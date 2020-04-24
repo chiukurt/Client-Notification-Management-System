@@ -1,0 +1,95 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><?php echo ucfirst($_GET['action']); ?> a <?php echo ucfirst($page);?></h1>
+    </div>
+  </div>
+	<div class="container">
+		<form <?php echo 'action="?page='.$page.'&action=doAdd"';?> method="post">
+		<table class="table table-hover">
+			<tr style="background:lightgrey;">
+				<td>
+					Rows marked with * are mandatory and require valid input.
+				</td>
+				<td>
+				</td>
+			</tr>
+			
+			<?php
+			
+						$active_clients=return_idsDB('client','Active',$con);
+						$archived_clients=return_idsDB('client','Archive',$con);
+						$enabled_notifications=return_idsDB('notification','Enabled',$con);
+						$disabled_notifications=return_idsDB('notification','Disabled',$con);
+					
+			echo
+			'<tr>
+				<td>Client ID: </td>
+				<td>
+				
+				<select name="ClientID">';
+				
+					foreach ($active_clients as $client)
+					echo '<option value="'.$client.'">'.$client.'</option>';
+					
+					foreach ($archived_clients as $client)
+					echo '<option value="'.$client.'">'.$client.'</option>';
+					
+				echo '</select>
+				
+				</td>
+			</tr>';
+			
+			
+			echo
+			'<tr>
+				<td>Notification ID: </td>
+				<td>
+				
+				<select name="NotificationID">';
+				
+					foreach ($enabled_notifications as $not)
+					echo '<option value="'.$not.'">'.$not.'</option>';
+					
+					foreach ($disabled_notifications as $not)
+					echo '<option value="'.$not.'">'.$not.'</option>';
+					
+				echo '</select>
+				
+				</td>
+			</tr>';
+
+			print_row ("*Start date dd-mm-yyyy","StartDate","");
+			print_row ("*Frequency","Frequency","");
+			?>
+			
+			<tr>
+				<td>
+					Status: Active
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Active"  > 
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					Status: Archive
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Archive" checked="checked" >
+				</td>
+			</tr>
+
+			
+		</table>
+		<?php write_errors($page, $errorpath); ?>
+		<br><input type="submit">
+		</form>
+	</div>
+</main>
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>
+

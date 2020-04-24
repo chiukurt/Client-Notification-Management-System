@@ -1,0 +1,56 @@
+<main role="main">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Hello, <?php echo $_COOKIE["user"]?></h1>
+      <p>Welcome to the Home Page.</p>
+	  <hr>
+	  <p> Archiving a client will disable all of their notifications.</p> 
+	  <p> Activating a client will only activate the 'Enabled' notifications.</p>
+	  <hr>
+	  <p> Disabling an entire notification will disable that notification for all clients.</p>
+	  <p> Enabling an entire notification will enable that notification for all clients with an archived instance of that notification.</p>
+	  <hr>
+	  <p>A notification for a specific client can only be created as active if the client is active and the notification is enabled.</p>
+	  <p>Otherwise, if both IDs are valid, it can still be created as archived.<p>
+	  <hr>
+	  <p>
+	  Deleting a client or notification will delete any linked events. 
+	  </p>
+	
+	</div>
+  </div>
+
+  <div class="container">
+    <!-- Homepage options, identical to navbar --> 
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Client section:</h2>
+        <p>Add a new Client</p>
+		<p>Modify the client's information</p>
+		<p>Archiving a client</p>
+		<p><a class="btn btn-secondary" href="?page=client&action=view" role="button">Manage clients &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Notification section:</h2>
+        <p>Add new notification (email, SMS, Push Notifications,…)</p>
+		<p>Modify notification (enable /disable/ change name)</p>
+		<p><a class="btn btn-secondary" href="?page=notification&action=view" role="button">Manage notifications &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Client's Notification Manager:</h2>
+        <p>Create a notification for a client</p>
+		<p>Manage client’s notifications</p>
+		<p>Archive the client’s notifications</p>
+		<p><a class="btn btn-secondary" href="?page=clientevent&action=view" role="button">Manage notifications per client &raquo;</a></p>
+      </div>
+    </div>
+    <hr>
+  </div> <!-- /container -->
+
+</main>
+
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>

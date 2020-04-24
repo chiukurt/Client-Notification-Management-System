@@ -1,0 +1,59 @@
+<?php if(is_array($row_to_update)):?>
+<script src="../app/lib/jsfunc.js"></script>
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><?php echo ucfirst($_GET['action']); ?> a <?php echo ucfirst($page);?></h1>
+    </div>
+  </div>
+	<div class="container">
+		
+<form <?php echo 'action="?page='.$page.'&action=doUpdate"';?> method="post">
+
+	<input type="hidden" name="ID" value="<?php echo $row_to_update['ID'];?>">
+	
+	<table class="table table-hover">
+		<tr  style="background:lightgrey;">
+			<td>
+				Rows marked with * are mandatory and require valid input.
+			</td>
+			<td>
+			</td>
+		</tr>
+			
+		<?php
+			print_row ("*Notification name","Name",$row_to_update['Name']);
+			print_row ("*Notification type","Type",$row_to_update['Type']);
+		?>
+	
+		<!-- Status button change requires javascript for confirmation! -->
+		<tr>
+			<td>Status: Enabled </td>
+			<td><input type="radio" name="Status" value="Enabled" id="activebutton" 
+			<?php if(stripos(($row_to_update['Status']),'Enabled')!==false){echo ' checked="checked"';}?>
+			onclick="return ask()">
+			</td>
+		</tr>
+		<tr>
+			<td>Status: Disabled </td>
+			<td><input type="radio" name="Status" value="Disabled" id="archivebutton"
+			<?php if(stripos(($row_to_update['Status']),'Disabled')!==false){echo ' checked="checked"';}?>
+			onclick="return ask()">
+			</td>
+		</tr>
+	</table>
+	<?php write_errors($page,$errorpath); ?>
+    <br><input type="submit">
+</form>
+	</div>
+</main>
+<?php else:?>
+    <h1>Cannot find the <?php echo $page;?></h1>
+<?php endif; ?>
+
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>
+
+

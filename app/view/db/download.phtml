@@ -1,0 +1,30 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Database Backup and Restore</h1>  
+    </div>
+  </div>
+  <div class="container">
+  <p>
+  <table class="table table-hover">
+    <?php
+		/*$filter = $_GET ['filter'];
+		list_headers ($header_items);
+		list_itemsDB ($fileinfo,$filter,$page);*/
+    ?>
+	
+	<tr>
+		<td>
+		<?php echo $downloadlink; ?>
+		</td>
+	</tr>
+	
+	</table>
+  <p>
+  </div>
+</main>
+
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>

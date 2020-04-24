@@ -1,0 +1,54 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><?php echo ucfirst($_GET['action']); ?> a <?php echo ucfirst($page);?></h1>
+    </div>
+  </div>
+	<div class="container">
+		<form <?php echo 'action="?page='.$page.'&action=doAdd"';?> method="post">
+		<table class="table table-hover">
+			<tr style="background:lightgrey;">
+				<td>
+					Rows marked with * are mandatory and require valid input.
+				</td>
+				<td>
+				</td>
+			</tr>
+			
+			<?php
+			print_row ("*Company Name","CompanyName","");
+			print_row ("*Business Phone Pumber","BusinessNumber","");
+			print_row ("*First Name","ContactFirstName","");
+			print_row ("*Last Name","ContactLastName","");
+			print_row ("*Phone Number","PhoneNumber","");
+			print_row ("*Cell Phone Number","CellNumber","");
+			print_row ("Website","Wesbsite","");
+			?>
+			
+			<tr>
+				<td>
+					Status: Active
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Active">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					Status: Archive
+				</td>
+				<td>
+					<input type="radio" name="Status" value="Archive" checked="checked">
+				</td>
+			</tr>
+		</table>
+		<?php write_errors($page,$errorpath); ?>
+		<br><input type="submit">
+		</form>
+	</div>
+</main>
+
+<?php
+$source_links [] = "<br><a href='/folder_view/vs.php?s=" . __FILE__ . "' target='_blank'>View Source of ". __FILE__;
+?>

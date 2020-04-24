@@ -1,0 +1,5 @@
+<?php
+unset($_COOKIE["user"]);
+setcookie("user", "", time()-36000);
+?>
+<a href="index.php?page=login">Click here to go back to log in page</a>
